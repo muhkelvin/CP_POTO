@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function FeaturedWorks() {
     const works = [
-        { id: 1, title: "Chronograph Masterpiece", category: "Watches" },
-        { id: 2, title: "Velvet Elegance", category: "Cosmetics" },
-        { id: 3, title: "Artisan Leather", category: "Accessories" },
-        { id: 4, title: "Diamond Collection", category: "Jewelry" },
+        { id: 1, title: "Chronograph Masterpiece", category: "Watches", img: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=80" },
+        { id: 2, title: "Velvet Elegance", category: "Cosmetics", img: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=800&q=80" },
+        { id: 3, title: "Artisan Leather", category: "Accessories", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" },
+        { id: 4, title: "Diamond Collection", category: "Jewelry", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" },
     ];
 
     return (
@@ -44,10 +45,14 @@ export default function FeaturedWorks() {
                             className="group cursor-pointer block"
                         >
                             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 mb-6 border border-zinc-200">
-                                {/* Kotak ini berfungsi sebagai gambar placeholder. Nanti bisa diganti dengan tag <img> */}
-                                <div className="absolute inset-0 bg-zinc-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-700 ease-in-out">
-                                    <span className="text-zinc-400 font-medium">Image: {work.category}</span>
-                                </div>
+                                <Image
+                                    src={work.img}
+                                    alt={work.title}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority={index < 2}
+                                />
                             </div>
                             <div className="flex items-center justify-between px-2">
                                 <div>
